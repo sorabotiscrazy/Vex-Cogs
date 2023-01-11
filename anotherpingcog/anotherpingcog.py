@@ -25,10 +25,7 @@ DEFAULT_CONF = {
     "green": {"emoji": None, "colour": None},
 }
 
-DEFAULT_FOOTER = (
-    "If the bot feels fast, don't worry about high numbers\nScale: Excellent | "
-    "Good | Alright | Bad | Very Bad"
-)
+DEFAULT_FOOTER = ()
 
 LEFT_ARROW = "\N{LEFTWARDS BLACK ARROW}\N{VARIATION SELECTOR-16}"
 
