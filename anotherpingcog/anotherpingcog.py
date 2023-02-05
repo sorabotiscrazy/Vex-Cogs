@@ -118,7 +118,7 @@ class AnotherPingCog(commands.Cog):
         embed: discord.Embed | None = None
 
         if use_embed:
-            embed = discord.Embed(title=title)
+            embed = discord.Embed(title=" ")
             embed.add_field(name="discord ws", value=box(f"{ws_latency} ms", "py"))
             if settings.footer == "default":
                 embed.set_footer(text=DEFAULT_FOOTER)
@@ -174,7 +174,7 @@ class AnotherPingCog(commands.Cog):
         if ws_latency < 50:
             ws_latency_text = f"{settings.green.emoji} excellent" if emojis else "excellent"
         elif ws_latency < 150:
-            ws_latency_text = f"{settings.green.emoji} Good" if emojis else "Good"
+            ws_latency_text = f"{settings.green.emoji} good" if emojis else "good"
         elif ws_latency < 250:
             ws_latency_text = f"{settings.orange.emoji} alright" if emojis else "alright"
         elif ws_latency < 500:
@@ -498,24 +498,24 @@ class AnotherPingCog(commands.Cog):
         await ctx.send(embed=embed)
         await ctx.send(
             embed=discord.Embed(
-                title=f"Emoji for green: {self.cache.green.emoji}",
-                description=f"{LEFT_ARROW} Colour for green",
+                title=f"emoji for green: {self.cache.green.emoji}",
+                description=f"{LEFT_ARROW} colour for green",
                 colour=self.cache.green.colour,
             )
         )
 
         await ctx.send(
             embed=discord.Embed(
-                title=f"Emoji for orange: {self.cache.orange.emoji}",
-                description=f"{LEFT_ARROW} Colour for orange",
+                title=f"emoji for orange: {self.cache.orange.emoji}",
+                description=f"{LEFT_ARROW} colour for orange",
                 colour=self.cache.orange.colour,
             )
         )
 
         await ctx.send(
             embed=discord.Embed(
-                title=f"Emoji for red: {self.cache.red.emoji}",
-                description=f"{LEFT_ARROW} Colour for red",
+                title=f"emoji for red: {self.cache.red.emoji}",
+                description=f"{LEFT_ARROW} colour for red",
                 colour=self.cache.red.colour,
             )
         )
