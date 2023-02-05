@@ -121,9 +121,9 @@ class AnotherPingCog(commands.Cog):
             embed = discord.Embed(title=" ")
             embed.add_field(name="discord ws", value=box(f"{ws_latency} ms", "py"))
             if settings.footer == "default":
-                embed.set_footer(text='pinkpantheress by joys#1900',icon_url="https://cdn.discordapp.com/emojis/958106172848750642.gif?size=128&quality=lossless")
+                embed.set_footer(text='')
             elif settings.footer != "none":
-                embed.set_footer(text='pinkpantheress by joys#1900',icon_url="https://cdn.discordapp.com/emojis/958106172848750642.gif?size=128&quality=lossless")
+                embed.set_footer(text='')
             start = monotonic()
             message: discord.Message = await ctx.send(embed=embed)
         else:
@@ -143,9 +143,9 @@ class AnotherPingCog(commands.Cog):
         if use_embed and embed is not None:
             colour = self._get_emb_colour(ws_latency, m_latency, settings)
             extra = box(f"{ws_latency} ms", "py")
-            embed.set_field_at(0, name="discord ws", value=f"{ws_latency_text}{extra}", inline=False)
+            embed.set_field_at(0, name="discord ws", value=f"{ws_latency_text}{extra}", inline=True)
             extra = box(f"{m_latency} ms", "py")
-            embed.add_field(name="message sending", value=f"{m_latency_text}{extra}", inline=False)
+            embed.add_field(name="message sending", value=f"{m_latency_text}{extra}", inline=True)
             embed.colour = colour
             await message.edit(embed=embed)
         else:
