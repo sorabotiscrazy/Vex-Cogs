@@ -99,9 +99,9 @@ class AnotherPingCog(commands.Cog):
             return
 
         title = (
-            "\N{TABLE TENNIS PADDLE AND BALL}  Pong!"
+            " "
             if ctx.invoked_with == "ping"
-            else "\N{SMIRKING FACE}  Nice typo!"
+            else " "
         )
 
         settings = self.cache
@@ -119,7 +119,7 @@ class AnotherPingCog(commands.Cog):
 
         if use_embed:
             embed = discord.Embed(title=title)
-            embed.add_field(name="Discord WS", value=box(f"{ws_latency} ms", "py"))
+            embed.add_field(name="discord ws", value=box(f"{ws_latency} ms", "py"))
             if settings.footer == "default":
                 embed.set_footer(text=DEFAULT_FOOTER)
             elif settings.footer != "none":
@@ -127,7 +127,7 @@ class AnotherPingCog(commands.Cog):
             start = monotonic()
             message: discord.Message = await ctx.send(embed=embed)
         else:
-            msg = f"**{title}**\nDiscord WS: {ws_latency} ms"
+            msg = f"**{title}**\ndiscord ws: {ws_latency} ms"
             start = monotonic()
             message = await ctx.send(msg)
         end = monotonic()
@@ -143,14 +143,14 @@ class AnotherPingCog(commands.Cog):
         if use_embed and embed is not None:
             colour = self._get_emb_colour(ws_latency, m_latency, settings)
             extra = box(f"{ws_latency} ms", "py")
-            embed.set_field_at(0, name="Discord WS", value=f"{ws_latency_text}{extra}")
+            embed.set_field_at(0, name="discord ws", value=f"{ws_latency_text}{extra}")
             extra = box(f"{m_latency} ms", "py")
-            embed.add_field(name="Message Send", value=f"{m_latency_text}{extra}")
+            embed.add_field(name="message sending", value=f"{m_latency_text}{extra}")
             embed.colour = colour
             await message.edit(embed=embed)
         else:
             data = [
-                ["Discord WS", "Message Send"],
+                ["discord ws", "message sending"],
                 [ws_latency_text, m_latency_text],
                 [f"{ws_latency} ms", f"{m_latency} ms"],
             ]
@@ -172,26 +172,26 @@ class AnotherPingCog(commands.Cog):
         self, ws_latency: int, m_latency: int, settings: Cache, emojis: bool
     ) -> tuple[str, str]:
         if ws_latency < 50:
-            ws_latency_text = f"{settings.green.emoji} Excellent" if emojis else "Excellent"
+            ws_latency_text = f"{settings.green.emoji} excellent" if emojis else "excellent"
         elif ws_latency < 150:
             ws_latency_text = f"{settings.green.emoji} Good" if emojis else "Good"
         elif ws_latency < 250:
-            ws_latency_text = f"{settings.orange.emoji} Alright" if emojis else "Alright"
+            ws_latency_text = f"{settings.orange.emoji} alright" if emojis else "alright"
         elif ws_latency < 500:
-            ws_latency_text = f"{settings.red.emoji} Bad" if emojis else "Bad"
+            ws_latency_text = f"{settings.red.emoji} bad" if emojis else "bad"
         else:
-            ws_latency_text = f"{settings.red.emoji} Very Bad" if emojis else "Very Bad"
+            ws_latency_text = f"{settings.red.emoji} very bad" if emojis else "very bad"
 
         if m_latency < 75:
-            m_latency_text = f"{settings.green.emoji} Excellent" if emojis else "Excellent"
+            m_latency_text = f"{settings.green.emoji} excellent" if emojis else "excellent"
         elif m_latency < 225:
-            m_latency_text = f"{settings.green.emoji} Good" if emojis else "Good"
+            m_latency_text = f"{settings.green.emoji} good" if emojis else "good"
         elif m_latency < 350:
-            m_latency_text = f"{settings.orange.emoji} Alright" if emojis else "Alright"
+            m_latency_text = f"{settings.orange.emoji} alright" if emojis else "alright"
         elif m_latency < 600:
-            m_latency_text = f"{settings.red.emoji} Bad" if emojis else "Bad"
+            m_latency_text = f"{settings.red.emoji} bad" if emojis else "bad"
         else:
-            m_latency_text = f"{settings.red.emoji} Very Bad" if emojis else "Very Bad"
+            m_latency_text = f"{settings.red.emoji} very bad" if emojis else "very bad"
 
         return ws_latency_text, m_latency_text
 
