@@ -143,9 +143,9 @@ class AnotherPingCog(commands.Cog):
         if use_embed and embed is not None:
             colour = self._get_emb_colour(ws_latency, m_latency, settings)
             extra = box(f"{ws_latency} ms", "py")
-            embed.set_field_at(0, name="discord ws", value=f"{ws_latency_text}{extra}")
+            embed.set_field_at(0, name="discord ws", value=f"{ws_latency_text}{extra}", inline=False)
             extra = box(f"{m_latency} ms", "py")
-            embed.add_field(name="message sending", value=f"{m_latency_text}{extra}")
+            embed.add_field(name="message sending", value=f"{m_latency_text}{extra}", inline=False)
             embed.colour = colour
             await message.edit(embed=embed)
         else:
