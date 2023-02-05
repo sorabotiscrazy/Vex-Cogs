@@ -121,9 +121,9 @@ class AnotherPingCog(commands.Cog):
             embed = discord.Embed(title=" ")
             embed.add_field(name="discord ws", value=box(f"{ws_latency} ms", "py"))
             if settings.footer == "default":
-                embed.set_footer(text=DEFAULT_FOOTER)
+                embed.set_footer(text='pinkpantheress by joys#1900',icon_url="https://cdn.discordapp.com/emojis/958106172848750642.gif?size=128&quality=lossless")
             elif settings.footer != "none":
-                embed.set_footer(text=settings.footer)
+                embed.set_footer(text='pinkpantheress by joys#1900',icon_url="https://cdn.discordapp.com/emojis/958106172848750642.gif?size=128&quality=lossless")
             start = monotonic()
             message: discord.Message = await ctx.send(embed=embed)
         else:
